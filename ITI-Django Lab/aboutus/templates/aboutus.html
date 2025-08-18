@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}About Us · MarketPlace{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <h1 class="text-4xl font-bold text-deep-blue mb-2">About Us</h1>
+    <p class="text-teal text-lg">Welcome to MarketPlace — your destination for quality products at great prices.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div
+        class="bg-white p-6 rounded-2xl shadow-lg border border-light-teal hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-2xl font-bold text-deep-blue mb-4">Our Story</h3>
+        <p class="text-teal mb-4">
+            Founded in 2025, MarketPlace started with a simple mission: make online shopping enjoyable, affordable, and
+            trustworthy.
+        </p>
+        <p class="text-teal">
+            We've expanded our product range, partnered with top brands, and built a loyal community of happy customers.
+        </p>
+    </div>
+
+    <div
+        class="bg-white p-6 rounded-2xl shadow-lg border border-light-teal hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-2xl font-bold text-deep-blue mb-4">Our Values</h3>
+        <ul class="space-y-3">
+            <li class="flex items-start text-teal">
+                <span class="text-deep-blue mr-3 font-bold">✓</span>
+                Customer First - Your satisfaction is our priority
+            </li>
+            <li class="flex items-start text-teal">
+                <span class="text-deep-blue mr-3 font-bold">✓</span>
+                Quality Products - Only the best makes it to our store
+            </li>
+            <li class="flex items-start text-teal">
+                <span class="text-deep-blue mr-3 font-bold">✓</span>
+                Fair Prices - Great value for your money
+            </li>
+            <li class="flex items-start text-teal">
+                <span class="text-deep-blue mr-3 font-bold">✓</span>
+                Fast Delivery - Quick and reliable shipping
+            </li>
+            <li class="flex items-start text-teal">
+                <span class="text-deep-blue mr-3 font-bold">✓</span>
+                24/7 Support - We're here to help anytime
+            </li>
+        </ul>
+    </div>
+
+    <div
+        class="bg-white p-6 rounded-2xl shadow-lg border border-light-teal hover:shadow-xl transition-shadow duration-300">
+        <h3 class="text-2xl font-bold text-deep-blue mb-4">Why Choose Us?</h3>
+        <div class="space-y-3">
+            <div class="bg-light-green p-3 rounded-lg border border-light-teal">
+                <div class="text-deep-blue font-bold text-lg">10K+ Happy Customers</div>
+            </div>
+            <div class="bg-light-green p-3 rounded-lg border border-light-teal">
+                <div class="text-deep-blue font-bold text-lg">500+ Products</div>
+            </div>
+            <div class="bg-light-green p-3 rounded-lg border border-light-teal">
+                <div class="text-deep-blue font-bold text-lg">99% Satisfaction Rate</div>
+            </div>
+            <div class="bg-light-green p-3 rounded-lg border border-light-teal">
+                <div class="text-deep-blue font-bold text-lg">24/7 Customer Support</div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

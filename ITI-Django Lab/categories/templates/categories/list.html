@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Categories · MarketPlace{% endblock %}
+{% block content %}
+<div class="mb-8">
+    <div class="flex items-center justify-between">
+        <div>
+            <h1 class="text-4xl font-bold text-deep-blue">Categories</h1>
+            <p class="text-teal">Organize your products by category</p>
+        </div>
+        <div>
+            <a href="{% url 'categories:create' %}" class="px-4 py-2 rounded-lg bg-teal text-white shadow-lg">+ New
+                Category</a>
+        </div>
+    </div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    {% for cat in categories %}
+    <div class="bg-white p-6 rounded-2xl shadow-lg border border-light-teal">
+        {% if cat.image %}
+        <img src="{{ cat.image.url }}" class="h-32 w-full object-cover rounded-xl mb-3 border border-light-teal">
+        {% endif %}
+        <div class="flex justify-between items-start">
+            <h3 class="text-xl font-bold text-deep-blue">{{ cat.name }}</h3>
+            <div class="space-x-2">
+                <a href="{% url 'categories:detail' cat.pk %}" class="text-teal hover:text-deep-blue">View</a>
+                {% if user.is_authenticated %}
+                <a href="{% url 'categories:edit' cat.pk %}" class="text-light-teal hover:text-deep-blue">Edit</a>
+                <a href="{% url 'categories:delete' cat.pk %}" class="text-red-500 hover:underline">Delete</a>
+                {% endif %}
+            </div>
+        </div>
+        <p class="text-teal mt-3">{{ cat.description|default:"No description" }}</p>
+        <div class="grid grid-cols-2 gap-2 text-xs text-teal mt-2">
+            <div>Created: {{ cat.created_at|date:'Y-m-d' }}</div>
+            <div>Updated: {{ cat.updated_at|date:'Y-m-d' }}</div>
+        </div>
+        <div class="mt-4">
+            <a href="{% url 'products:list' %}?category={{ cat.pk }}" class="text-deep-blue font-semibold">View
+                products</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

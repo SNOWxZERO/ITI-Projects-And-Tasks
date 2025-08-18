@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+    <h2>{{ category.name }}</h2>
+    {% if category.image %}
+    <img src="{{ category.image.url }}" class="img-fluid mb-3">
+    {% endif %}
+    <p>{{ category.description }}</p>
+
+    <h4>Products in this Category</h4>
+    <ul>
+        {% for product in category.products.all %}
+        <li>{{ product.name }} - {{ product.price }}</li>
+        {% empty %}
+        <li>No products yet.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'category:edit' category.pk %}" class="btn btn-warning">Edit</a>
+    <a href="{% url 'category:delete' category.pk %}" class="btn btn-danger">Delete</a>
+</div>
+{% endblock %}

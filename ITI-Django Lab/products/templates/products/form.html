@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% block title %}{{ mode }} Product · MarketPlace{% endblock %}
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="mb-8">
+        <h1 class="text-4xl font-bold text-deep-blue mb-2">{{ mode }} Product</h1>
+        <p class="text-teal text-lg">{% if mode == "Create" %}Add a new product to your marketplace{% else %}Update
+            product information{% endif %}</p>
+    </div>
+
+    <form method="post" enctype="multipart/form-data"
+        class="bg-white p-8 rounded-2xl shadow-xl border border-light-teal space-y-6">
+        {% csrf_token %}
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-deep-blue mb-2">Product Name</label>
+                {{ form.name }}
+                {% if form.name.errors %}
+                <div class="text-red-500 text-sm">{{ form.name.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-deep-blue mb-2">Product Code</label>
+                {{ form.code }}
+                {% if form.code.errors %}
+                <div class="text-red-500 text-sm">{{ form.code.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-deep-blue mb-2">Price (EGP)</label>
+                {{ form.price }}
+                {% if form.price.errors %}
+                <div class="text-red-500 text-sm">{{ form.price.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-2">
+                <label class="block text-sm font-semibold text-deep-blue mb-2">Items in Stock</label>
+                {{ form.instock_items }}
+                {% if form.instock_items.errors %}
+                <div class="text-red-500 text-sm">{{ form.instock_items.errors.0 }}</div>
+                {% endif %}
+            </div>
+
+            <div class="space-y-2 md:col-span-2">
+                <label class="block text-sm font-semibold text-deep-blue mb-2">Category</label>
+                {{ form.category }}
+                {% if form.category.errors %}
+                <div class="text-red-500 text-sm">{{ form.category.errors.0 }}</div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="space-y-2">
+            <label class="block text-sm font-semibold text-deep-blue mb-2">Product Image</label>
+            <div class="bg-light-green p-4 rounded-lg border-2 border-dashed border-light-teal">
+                {{ form.image }}
+            </div>
+            {% if form.image.errors %}
+            <div class="text-red-500 text-sm">{{ form.image.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="space-y-2">
+            <label class="block text-sm font-semibold text-deep-blue mb-2">Description</label>
+            {{ form.description }}
+            {% if form.description.errors %}
+            <div class="text-red-500 text-sm">{{ form.description.errors.0 }}</div>
+            {% endif %}
+        </div>
+
+        <div class="flex gap-4 pt-4">
+            <button type="submit"
+                class="flex-1 px-8 py-3 rounded-lg bg-teal text-white hover:bg-deep-blue transition-colors duration-200 font-semibold shadow-lg">
+                {% if mode == "Create" %}Create Product{% else %}Update Product{% endif %}
+            </button>
+            <a href="{% url 'products:list' %}"
+                class="flex-1 px-8 py-3 rounded-lg bg-light-teal text-deep-blue hover:bg-gray-300 transition-colors duration-200 font-semibold text-center shadow-lg">
+                Cancel
+            </a>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Style form inputs */
+    input[type="text"],
+    input[type="number"],
+    input[type="file"],
+    textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #98D2C0;
+        border-radius: 8px;
+        font-size: 16px;
+        color: #205781;
+        background-color: white;
+        transition: border-color 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="number"]:focus,
+    input[type="file"]:focus,
+    textarea:focus {
+        outline: none;
+        border-color: #4F959D;
+        box-shadow: 0 0 0 3px rgba(79, 149, 157, 0.1);
+    }
+
+    textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+</style>
+{% endblock %}

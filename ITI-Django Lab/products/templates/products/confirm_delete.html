@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Delete {{ product.name }} · MarketPlace{% endblock %}
+{% block content %}
+<div class="max-w-2xl mx-auto">
+    <div class="bg-white rounded-2xl shadow-xl border border-red-200 p-8">
+        <div class="text-center mb-6">
+            <div class="text-red-500 text-6xl mb-4">⚠️</div>
+            <h1 class="text-3xl font-bold text-deep-blue mb-2">Delete Product</h1>
+            <p class="text-teal text-lg">This action cannot be undone</p>
+        </div>
+
+        <div class="bg-red-50 border border-red-200 rounded-lg p-6 mb-6">
+            <p class="text-deep-blue text-center text-lg">
+                Are you sure you want to delete
+                <strong class="text-red-600">{{ product.name }}</strong>
+                <span class="text-teal">({{ product.code }})</span>?
+            </p>
+        </div>
+
+        <form method="post" class="flex gap-4">
+            {% csrf_token %}
+            <button type="submit"
+                class="flex-1 px-6 py-3 rounded-lg bg-red-500 text-white hover:bg-red-600 transition-colors duration-200 font-semibold shadow-lg">
+                Yes, Delete Product
+            </button>
+            <a href="{% url 'products:detail' product.pk %}"
+                class="flex-1 px-6 py-3 rounded-lg bg-light-teal text-deep-blue hover:bg-gray-300 transition-colors duration-200 font-semibold text-center shadow-lg">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

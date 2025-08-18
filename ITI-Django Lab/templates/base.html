@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}MarketPlace{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deep-blue': '#205781',
+                        'teal': '#4F959D',
+                        'light-teal': '#98D2C0',
+                        'light-green': '#F6F8D5'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-light-green text-deep-blue">
+    <header class="bg-deep-blue shadow-lg">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="{% url 'home' %}"
+                class="text-2xl font-bold text-light-green hover:text-light-teal transition-colors">MarketPlace</a>
+            <nav class="flex gap-6">
+                <a class="text-light-green hover:text-light-teal transition-colors font-medium"
+                    href="{% url 'products:list' %}">Products</a>
+                <a class="text-light-green hover:text-light-teal transition-colors font-medium"
+                    href="{% url 'categories:list' %}">Categories</a>
+                <a class="text-light-green hover:text-light-teal transition-colors font-medium"
+                    href="/contactus/">Contact Us</a>
+                <a class="text-light-green hover:text-light-teal transition-colors font-medium"
+                    href="/aboutus/">About</a>
+
+            </nav>
+            <div class="flex items-center gap-4">
+                {% if user.is_authenticated %}
+                <a href="{% url 'products:create' %}"
+                    class="px-6 py-2 rounded-lg shadow-lg bg-teal text-white hover:bg-light-teal hover:text-deep-blue transition-all duration-200 font-medium">
+                    + New Product
+                </a>
+                <div class="relative" id="userDropdownWrapper">
+                    <button id="userDropdownBtn" type="button"
+                        class="flex items-center gap-2 px-4 py-2 rounded-lg bg-light-teal text-deep-blue font-medium focus:outline-none">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5.121 17.804A13.937 13.937 0 0112 15c2.5 0 4.847.655 6.879 1.804M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {{ user.username }}
+                        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+                    <div id="userDropdownMenu"
+                        class="absolute right-0 mt-2 w-40 bg-white rounded-lg shadow-lg border border-light-teal hidden z-50">
+                        <form method="post" action="{% url 'logout' %}" class="block">
+                            {% csrf_token %}
+                            <button type="submit"
+                                class="w-full text-left px-4 py-2 text-deep-blue hover:bg-light-teal">Sign Out</button>
+                        </form>
+                    </div>
+                </div>
+                {% else %}
+                <a href="{% url 'login' %}"
+                    class="px-4 py-2 rounded-lg bg-teal text-white hover:bg-light-teal hover:text-deep-blue font-medium">Sign
+                    In</a>
+                <a href="{% url 'register' %}"
+                    class="px-4 py-2 rounded-lg bg-light-teal text-deep-blue hover:bg-teal hover:text-white font-medium">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-8">
+        {% if messages %}
+        <div class="mb-4 space-y-2">
+            {% for message in messages %}
+            <div class="p-4 rounded-lg bg-light-teal text-deep-blue shadow-md">{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="py-8 text-center text-sm bg-deep-blue text-light-green">
+        © {{ now|default:2025 }} MarketPlace - Bringing Quality Products to You
+    </footer>
+
+    <script>
+        // Dropdown logic for user menu
+        const btn = document.getElementById('userDropdownBtn');
+        const menu = document.getElementById('userDropdownMenu');
+        const wrapper = document.getElementById('userDropdownWrapper');
+        if (btn && menu && wrapper) {
+            let open = false;
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                open = !open;
+                menu.classList.toggle('hidden', !open);
+            });
+            wrapper.addEventListener('mouseenter', function () {
+                menu.classList.remove('hidden');
+            });
+            wrapper.addEventListener('mouseleave', function () {
+                if (!open) menu.classList.add('hidden');
+            });
+            document.addEventListener('click', function (e) {
+                if (!wrapper.contains(e.target)) {
+                    menu.classList.add('hidden');
+                    open = false;
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
