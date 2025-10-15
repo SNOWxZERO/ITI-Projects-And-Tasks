@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerJohnServiceLayer", "FarmerJohnServiceLayer\FarmerJohnServiceLayer.csproj", "{79743366-EE9B-4919-A7CD-A8CBEF5197ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerJohnDataAccessLayer", "FarmerJohnDataAccessLayer\FarmerJohnDataAccessLayer.csproj", "{BDDCD73C-54FF-46FD-8B20-9BF08760308E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerJohnBusinessLayer", "FarmerJohnBusinessLayer\FarmerJohnBusinessLayer.csproj", "{62E46DBB-9A5C-40DA-A1DB-CC20A5110056}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerJohnCommon", "FarmerJohnCommon\FarmerJohnCommon.csproj", "{D09A6843-23B0-4699-A9DA-DC288CBFFAC9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79743366-EE9B-4919-A7CD-A8CBEF5197ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79743366-EE9B-4919-A7CD-A8CBEF5197ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79743366-EE9B-4919-A7CD-A8CBEF5197ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79743366-EE9B-4919-A7CD-A8CBEF5197ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDCD73C-54FF-46FD-8B20-9BF08760308E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDCD73C-54FF-46FD-8B20-9BF08760308E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDCD73C-54FF-46FD-8B20-9BF08760308E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDCD73C-54FF-46FD-8B20-9BF08760308E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62E46DBB-9A5C-40DA-A1DB-CC20A5110056}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62E46DBB-9A5C-40DA-A1DB-CC20A5110056}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62E46DBB-9A5C-40DA-A1DB-CC20A5110056}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62E46DBB-9A5C-40DA-A1DB-CC20A5110056}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09A6843-23B0-4699-A9DA-DC288CBFFAC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09A6843-23B0-4699-A9DA-DC288CBFFAC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09A6843-23B0-4699-A9DA-DC288CBFFAC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09A6843-23B0-4699-A9DA-DC288CBFFAC9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

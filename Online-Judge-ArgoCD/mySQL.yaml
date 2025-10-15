@@ -1,0 +1,94 @@
+# Namespace
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: online-judge
+
+---
+# Secret for MySQL credentials
+apiVersion: v1
+kind: Secret
+metadata:
+  name: oj-mysql-secret
+  namespace: online-judge
+type: Opaque
+stringData:
+  mysql-root-password: "mysqldatabase123"
+  mysql-database: "OJ"
+
+---
+# PersistentVolumeClaim for MySQL
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: oj-mysql-pvc
+  namespace: online-judge
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
+
+---
+# MySQL Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: some-mysql
+  namespace: online-judge
+spec:
+  selector:
+    matchLabels:
+      app: some-mysql
+  template:
+    metadata:
+      labels:
+        app: some-mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: oj-mysql-secret
+                  key: mysql-root-password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                secretKeyRef:
+                  name: oj-mysql-secret
+                  key: mysql-database
+          ports:
+            - containerPort: 3306
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - mysqladmin ping -h 127.0.0.1 -uroot -p$(MYSQL_ROOT_PASSWORD)
+            initialDelaySeconds: 10
+            periodSeconds: 5
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-data
+          persistentVolumeClaim:
+            claimName: oj-mysql-pvc
+
+---
+# MySQL Service (internal)
+apiVersion: v1
+kind: Service
+metadata:
+  name: some-mysql
+  namespace: online-judge
+spec:
+  selector:
+    app: some-mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  type: ClusterIP

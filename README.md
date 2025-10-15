@@ -1,26 +1,32 @@
 # 🎓 ITI Projects Repository
 
-Welcome to my collection of projects developed during my training at the **Information Technology Institute (ITI)**. This repository showcases various technologies learned throughout the program, including Bash scripting, Python development, and Django web development.
+Welcome to my collection of projects developed during my training at the **Information Technology Institute (ITI)**. This repository showcases a comprehensive learning journey spanning shell scripting, Python development, web frameworks, containerization, orchestration, and infrastructure as code.
 
-## 📋 Project Overview
+## 📋 Table of Contents
 
-This repository contains three main projects demonstrating different aspects of software development:
-
-| Project | Technology | Description | Status |
-|---------|------------|-------------|---------|
-| [Bash DBMS](#bash-database-management-system) | Bash Scripting | Complete database management system | ✅ Complete |
-| [CrowdFunding Console App](#crowdfunding-python-console-app) | Python + SQLite | Console-based crowdfunding platform | ✅ Complete |
-| [Django Web App](#django-web-application) | Django + Python | E-commerce web application | ✅ Complete |
+- [Dev Projects](#-core-projects)
+  - [Bash Database Management System](#-bash-database-management-system)
+  - [CrowdFunding Console App](#-crowdfunding-python-console-app)
+  - [Django Web Application](#-django-web-application)
+- [DevOps & Infrastructure Projects](#-devops--infrastructure-projects)
+  - [Jenkins Final Project](#jenkins-final-project)
+  - [Kubernetes Tasks](#kubernetes-tasks)
+  - [Online Judge with ArgoCD](#online-judge-with-argocd)
+  - [Prometheus Demo](#prometheus-demo)
+  - [Terraform Final Project](#terraform-final-project)
+- [License](#-license)
 
 ---
 
-## 🗄️ Bash Database Management System
+## 🚀 Dev Projects
+
+### 🗄️ Bash Database Management System
 
 **Location**: `Bash-DBMS-An-ITI-Project/`
 
 A fully functional Database Management System implemented entirely in Bash scripting, featuring a responsive terminal interface that adapts to different screen sizes.
 
-### Main Features
+#### Features
 
 - Complete CRUD operations for databases and tables
 - Data type validation (int, string)
@@ -29,14 +35,14 @@ A fully functional Database Management System implemented entirely in Bash scrip
 - Responsive UI with dynamic centering
 - Beautiful ASCII table formatting
 
-### Technical Implementation
+#### Technical Highlights
 
-- **Pure Bash Implementation**: No external dependencies
+- **Pure Bash Implementation**: No external dependencies required
 - **Responsive Design**: Adapts to terminal width using `tput`
 - **Data Integrity**: Comprehensive validation and error handling
 - **File-based Storage**: Efficient data storage using structured files
 
-### Getting Started
+#### Getting Started
 
 ```bash
 cd Bash-DBMS-An-ITI-Project
@@ -48,13 +54,13 @@ chmod +x DBMS.sh
 
 ---
 
-## 💰 CrowdFunding Python Console App
+### 💰 CrowdFunding Python Console App
 
 **Location**: `CrowdFundingPythonConsoleApp/`
 
 A sophisticated console-based crowdfunding platform built with Python and SQLite, featuring user authentication, project management, and search capabilities.
 
-### Core Features
+#### Features
 
 - **User Management**: Registration, activation, and secure authentication
 - **Project CRUD**: Create, read, update, and delete funding projects
@@ -62,14 +68,14 @@ A sophisticated console-based crowdfunding platform built with Python and SQLite
 - **Security**: PBKDF2 password hashing with salt
 - **Data Validation**: Email and Egyptian mobile number validation
 
-### Technical Architecture
+#### Technical Architecture
 
-- **Modular Architecture**: Clean separation of concerns
-- **Database Integration**: SQLite with parameterized queries
-- **Security First**: Secure password handling and SQL injection prevention
-- **User Experience**: Tabulated output and cross-platform terminal support
+- **Modular Design**: Clean separation of concerns with organized modules
+- **Database Integration**: SQLite with parameterized queries to prevent SQL injection
+- **Security First**: Secure password handling and input validation
+- **Enhanced UX**: Tabulated output and cross-platform terminal support
 
-### Installation & Usage
+#### Installation & Usage
 
 ```bash
 cd CrowdFundingPythonConsoleApp
@@ -81,37 +87,29 @@ python main.py
 
 ---
 
-## 🌐 Django Web Application
+### 🌐 Django Web Application
 
 **Location**: `ITI-Django Lab/`
 
-A full-featured Django web application demonstrating modern web development practices with multiple apps for different functionalities.
+A full-featured Django web application demonstrating modern web development practices with a multi-app architecture for different functionalities.
 
-### Application Features
+#### Features
 
-- **Multi-App Architecture**: Organized into specialized Django apps
+- **Multi-App Architecture**: Organized into specialized Django apps for modularity
 - **User Authentication**: Login system with session management
-- **Product Management**: Categories and product listings
+- **Product Management**: Categories and product listings with full CRUD
 - **Content Pages**: About Us and Contact Us functionality
-- **Media Handling**: Image upload and management
+- **Media Handling**: Image upload and management system
 
-### Application Structure
+#### Application Structure
 
 - **`products/`**: Product listings and management
 - **`categories/`**: Product categorization system
 - **`accounts/`**: User authentication and management
 - **`aboutus/`**: About Us page functionality
-- **`contactus/`**: Contact Us form and handling
+- **`contactus/`**: Contact form and message handling
 
-### Django Implementation
-
-- **Django Framework**: Leveraging Django's powerful features
-- **Database Models**: Well-structured data relationships
-- **Template System**: Dynamic HTML generation
-- **Static Files**: CSS and media file management
-- **Admin Interface**: Django admin for content management
-
-### Setup Instructions
+#### Setup Instructions
 
 ```bash
 cd "ITI-Django Lab"
@@ -124,9 +122,139 @@ python manage.py runserver
 
 ---
 
+## ⚙️ DevOps & Infrastructure Projects
+
+### Jenkins Final Project
+
+**Location**: `Jenkins-Final-Project/`
+
+End-to-end CI/CD automation project demonstrating Jenkins integration with modern DevOps tools.
+
+#### Components
+
+- **Ansible Playbooks**: Automated configuration of Jenkins agents
+- **Docker Images**: Custom Jenkins agent images with Dockerfiles
+- **Terraform Examples**: Infrastructure provisioning automation
+- **CI/CD Pipeline**: Complete automation workflow examples
+
+#### Use Cases
+
+- Automated agent provisioning and configuration
+- Infrastructure as Code demonstrations
+- CI/CD pipeline implementations
+
+---
+
+### Kubernetes Tasks
+
+**Location**: `Kubernates Tasks/`
+
+Structured learning path for Kubernetes with day-by-day exercises covering core concepts and practical implementations.
+
+#### Structure
+
+- **Day 1-5**: Progressive learning modules
+- **Manifests**: Working examples for each concept
+- **Exercises**: Hands-on practice tasks
+
+#### Topics Covered
+
+- Deployments and ReplicaSets
+- Services (ClusterIP, NodePort, LoadBalancer)
+- Ingress controllers and routing
+- ConfigMaps and Secrets
+- Persistent Volumes and Claims
+
+---
+
+### Online Judge with ArgoCD
+
+**Location**: `Online-Judge-ArgoCD/`
+
+GitOps demonstration project showcasing automated deployment using ArgoCD for an online judge platform.
+
+#### Architecture
+
+- **Frontend**: User interface deployment manifests
+- **Backend**: API service configuration
+- **Database**: MySQL deployment with persistent storage
+- **Ingress**: Routing and load balancing setup
+- **MetalLB**: Bare-metal load balancer configuration
+
+#### Features
+
+- GitOps workflow with ArgoCD
+- Declarative application management
+- Automated synchronization and deployment
+- Complete secrets management
+
+---
+
+### Prometheus Demo
+
+**Location**: `Prometheus/`
+
+Observability and monitoring demonstration using Prometheus for metrics collection and visualization.
+
+#### Components
+
+- **Scraping Configurations**: Prometheus scrape configs and targets
+- **Demo Application**: Sample app with exposed metrics
+- **Monitoring Stack**: Complete setup for metrics collection
+
+#### Purpose
+
+- Introduction to observability practices
+- Metrics collection and monitoring
+- Foundation for building monitoring solutions
+
+---
+
+### Terraform Final Project
+
+**Location**: `Terraform Final-Project/`
+
+Comprehensive Infrastructure as Code project demonstrating Terraform best practices and complete infrastructure automation.
+
+#### Structure
+
+- **Provider Configuration**: Cloud provider setup and authentication
+- **Modules**: Reusable infrastructure components
+- **Variables**: Parameterized configuration
+- **State Management**: Remote state configuration
+- **Helper Scripts**: Automation and deployment utilities
+
+#### Features
+
+- Modular infrastructure design
+- Reusable components and patterns
+- Complete documentation and examples
+- Production-ready configurations
+
+---
+
+## 📊 Technology Stack Summary
+
+| Category | Technologies |
+|----------|-------------|
+| **Languages** | Bash, Python, JavaScript |
+| **Frameworks** | Django |
+| **Databases** | SQLite, MySQL |
+| **DevOps** | Docker, Kubernetes, Jenkins, ArgoCD, Prometheus |
+| **IaC** | Terraform, Ansible |
+| **Monitoring** | Prometheus, MetalLB |
+
+---
+
 ## 📄 License
 
 These projects are created for educational purposes as part of the ITI (Information Technology Institute) training program. Feel free to use them for learning and reference.
+
+---
+
+## 🤝 Contributing
+
+While these are primarily educational projects, suggestions and improvements are welcome. Feel free to open an issue or submit a pull request.
 
 ---
 
@@ -134,4 +262,4 @@ These projects are created for educational purposes as part of the ITI (Informat
 
 ---
 
-Last updated: August 2025
+*Last updated: October 2025*

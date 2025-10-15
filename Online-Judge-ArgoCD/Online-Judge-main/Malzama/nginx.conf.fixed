@@ -1,0 +1,44 @@
+# Set the user for worker processes. This should match the NGINX_USER defined in the Dockerfile (appuser).
+user appuser appgroup;
+
+pid /tmp/nginx/run/nginx.pid;
+
+worker_processes auto;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    sendfile        on;
+    keepalive_timeout 65;
+
+    server {
+        listen 8080;
+        server_name  localhost;
+
+        # Root directory for frontend files
+        root /usr/share/nginx/html;
+        index index.html;
+
+        # Serve frontend SPA
+        location / {
+            try_files $uri $uri/ /index.html;
+        }
+
+        # Proxy API requests to backend
+        location /api/ {
+            proxy_pass http://farmer-john-api:80/;  # backend container name + HTTP port, strip /api prefix
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Prevent Nginx version exposure
+        server_tokens off;
+    }
+}

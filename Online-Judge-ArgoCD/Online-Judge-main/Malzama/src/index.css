@@ -1,0 +1,465 @@
+html {
+  overflow-y: scroll;
+
+}
+*{
+  box-sizing: border-box;
+  font-family:  -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  font-size: 1.01rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ 
+}
+body {
+  padding: 100;
+  margin: 100;
+  font-family:monospace, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+
+
+}
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+/* Adjust the padding to accommodate the scrollbar */
+body {
+  padding-right: 10px;
+}
+
+/* Fix the content misplacement when the scrollbar disappears */
+@media (max-width: 768px) {
+  body {
+    padding-right: 0;
+    margin-right: 10px;
+  }
+}
+.navbar.fixed-top {
+  right: 0 !important;
+}
+
+code {
+  font-family: monospace, source-code-pro, Menlo, Monaco, Consolas, 'Courier New' ;
+}
+
+.container {
+  padding: 0 90px;
+  margin: 0 auto;
+  padding-right: calc(100vw - 100%);
+}
+
+.mdeStyle {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+  
+}
+
+nav{
+  background-color: #0E141E;
+  z-index: 1030;
+}
+.navbar-nav .nav-link {
+  color: #B7C9CC;
+}
+.navbar-nav .nav-link:hover {
+  color: white;
+}
+
+
+
+
+.nav-item{
+  margin: 0 1.5rem;
+}
+
+.name{
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+}
+
+.limits{
+  font-size: 15px;
+  color: #333;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.copyButton {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: monospace;
+  font-size: 0.75rem;
+  background-color: transparent;
+  color: #000000;
+  border: 1px solid #000000;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: 0.25rem;
+  font-weight: bold;
+}
+
+.copyButton:hover {
+  color: #000000;
+  background-color: #ffffff;
+}
+
+.buttonDiv{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  /* //make them to not be so far apart */
+  max-width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sample{
+  white-space: pre-wrap;
+  background-color: #E7EEEF;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 1.125rem;
+  position: relative;
+}
+
+.editor{
+  background-color: #E7EEEF;
+  font-family: monospace;
+  font-size: 1.125rem;
+  position: relative;
+  border: 0.25rem solid #ccc;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem; 
+  padding: 1rem;
+  height: 100%;
+  width: 100%;
+
+
+}
+
+.custom-focused{
+  border-color: #2EC866;
+}
+
+.submit{
+
+  margin: 5rem 0;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color: #fff;
+ 
+}
+.submitBtn{
+  background-color: LightGray;
+  color: black;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  margin: 1rem auto;
+
+}
+.submitBtn:hover {
+  background-color: #00751F;
+  color: white;
+}
+/* start problem statement */
+
+.containerDiv {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5rem;
+  margin-bottom: 1rem;
+}
+
+.createDiv {
+  margin-top: 2rem;
+}
+
+.createDiv > * + * {
+  margin-top: 2rem;
+}
+
+.startFlex{
+  display: flex;
+  align-items: flex-start;
+}
+.pW{
+  width:12rem;
+  min-width: fit-content;
+
+}
+.divGrow{
+  flex-grow: 1;
+  max-width: 880px;
+}
+
+.w-md-editor-text-pre > code,
+.w-md-editor-text-input {
+  font-size: 1rem !important;
+  line-height:1.5 !important;
+  font-family: monospace !important;
+}
+
+.w-md-editor-toolbar {
+  border-radius: 0.25rem;
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  background-color: #E7EEEF;
+  
+}
+
+.fieldSize{
+  white-space: pre-wrap;
+
+}
+
+.clickableHover{
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  font-size: 1.05rem;
+  font-weight: bold;
+
+  &:hover{
+    color: #00751F;
+  }
+}
+.colouredParagraph{
+  color: #00751F;
+  font-weight: bold;
+  font-size: 1.3rem;
+  
+  /*  */
+}
+
+.submitForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  width: 100%;
+
+
+}
+
+.tags {
+  margin-top: 15rem;
+  margin-bottom: 1rem;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 1rem;
+  background-color: #E7EEEF;
+  border-radius: 0.25rem;
+  max-width:20rem
+}
+
+.tags h6{
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}
+.tagsDiv{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+.tagName{
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-family: monospace;
+  font-size: 0.80rem;
+  background-color: white;
+  color: #000000;
+  border: 1px solid #000000;
+  font-weight: bold;
+
+}
+/* end problem statement */
+
+.red {
+  color: red;
+}
+.green {
+  color: green;
+}
+
+.table-row {
+  height: 2.5rem;
+  font-size: 1.125rem;
+}
+
+.even {
+  background-color: whitesmoke;
+}
+
+.odd {
+  background-color: slate-50;
+}
+
+.text-blue {
+  color: #0E141E;
+}
+
+.textArea{
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  padding: 0.25rem;
+  margin-bottom: 1rem;
+  
+}
+
+
+
+.tooltip-content {
+  width: 7rem;
+  height: 7rem;
+}
+
+.tooltip-textarea {
+  width: 100%;
+  height: 100%;
+  color: white;
+  background-color: transparent;
+  padding: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.tooltip-trigger {
+  cursor: pointer;
+}
+
+.delete-button{
+  background-color: #0E141E;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  display: block;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+.custom-heading {
+  line-height: 2.25rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+  color: #0E141E;
+
+}
+.custom-heading2 {
+  line-height: 2.25rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #0E141E;
+
+}
+
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5rem;
+}
+
+.custom-table-head {
+  border: 1px solid #ccc;
+  height: 3rem;
+  font-size: 1.09rem;
+}
+
+.custom-table th,
+.custom-table td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+.custom-table th {
+  font-weight: bold;
+}
+
+.custom-table td {
+  font-size: 1rem;
+  text-align: center;
+}
+
+.custom-table td:first-child {
+  text-align: center;
+}
+
+.custom-table td:nth-child(2),
+.custom-table td:nth-child(3) {
+  text-align: center;
+}
+
+.custom-table td:last-child {
+  text-align: center;
+}
+
+/* accordian start */
+.accColor{
+  background-color: #E7EEEF;
+
+}
+.error-message {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+

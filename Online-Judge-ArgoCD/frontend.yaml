@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: malzama
+  namespace: online-judge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: malzama
+  template:
+    metadata:
+      labels:
+        app: malzama
+    spec:
+      containers:
+        - name: malzama
+          image: snowxzero/malzma:1.5  # or <DOCKERHUB_USER>/malzama:latest
+          ports:
+            - containerPort: 8080
+          # If the frontend needs runtime API host config, mount a config or use env + startup script
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+---
+# Malzama Service (internal)
+apiVersion: v1
+kind: Service
+metadata:
+  name: malzama
+  namespace: online-judge
+spec:
+  selector:
+    app: malzama
+  ports:
+    - port: 8080
+      targetPort: 8080
+  type: ClusterIP

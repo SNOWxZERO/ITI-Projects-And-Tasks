@@ -1,0 +1,33 @@
+FROM nginx:alpine
+
+# 1. Define the custom user and group (using nginx user name for simplicity)
+ARG NGINX_USER=appuser
+ARG NGINX_GROUP=appgroup
+
+# 2. Add the custom group and user
+RUN addgroup -S ${NGINX_GROUP} && adduser -S ${NGINX_USER} -G ${NGINX_GROUP}
+
+# 3. Create a writable directory for the PID file and logs (e.g., /tmp)
+RUN mkdir -p /tmp/nginx/logs /tmp/nginx/run \
+    && chown -R ${NGINX_USER}:${NGINX_GROUP} /tmp/nginx \
+    && chown -R ${NGINX_USER}:${NGINX_GROUP} /var/cache/nginx
+
+# 4. Copy the custom config file that directs Nginx to use the /tmp directory
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# 5. Remove default Nginx config content
+RUN rm -rf /usr/share/nginx/html/*
+
+# 6. Copy built files from the builder stage
+COPY /dist /usr/share/nginx/html
+
+# 7. Grant ownership of the served files to the non-root user
+RUN chown -R ${NGINX_USER}:${NGINX_GROUP} /usr/share/nginx/html
+
+EXPOSE 8080
+
+# 8. Set the non-root user for the runtime process
+USER ${NGINX_USER}
+
+# 9. Use a custom CMD to specify the custom config
+CMD ["nginx", "-c", "/etc/nginx/nginx.conf", "-g", "daemon off;"]

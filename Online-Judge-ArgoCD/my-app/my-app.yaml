@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: my-first-app
+ namespace: argocd
+spec:
+ project: default
+ source:
+  repoURL: https://github.com/MohamedSaeed003/online-judge-Argocd.git
+  targetRevision: HEAD
+  path: .
+ destination:
+  server: https://kubernetes.default.svc
+  namespace: online-judge
+ syncPolicy:
+    automated:
+        prune: true
+        selfHeal: true

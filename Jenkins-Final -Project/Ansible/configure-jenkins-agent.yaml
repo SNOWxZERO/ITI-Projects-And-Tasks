@@ -1,0 +1,51 @@
+---
+- name: Configure Jenkins Agent EC2
+  hosts: jenkins_agents
+  become: true
+
+  tasks:
+    - name: Update yum packages
+      yum:
+        name: "*"
+        state: latest
+
+    - name: Install required packages
+      yum:
+        name:
+          - java-17-amazon-corretto
+          - docker
+          - git
+          - curl
+          - unzip
+        state: present
+
+    - name: Ensure Docker service is enabled and started
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Create jenkins user
+      user:
+        name: jenkins
+        groups: docker
+        append: yes
+        shell: /bin/bash
+        create_home: yes
+
+    - name: Set password for jenkins user
+      user:
+        name: jenkins
+        password: "{{ 'jenkins' | password_hash('sha512') }}"
+
+    - name: Enable SSH for password login
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^PasswordAuthentication'
+        line: 'PasswordAuthentication yes'
+        state: present
+
+    - name: Restart SSH service
+      systemd:
+        name: sshd
+        state: restarted

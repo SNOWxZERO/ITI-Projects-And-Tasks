@@ -1,0 +1,74 @@
+# Farmer-John Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: farmer-john
+  namespace: online-judge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: farmer-john
+  template:
+    metadata:
+      labels:
+        app: farmer-john
+    spec:
+      containers:
+        - name: farmer-john
+          # Replace DOCKERHUB_USER with your hub user if image pushed
+          image: snowxzero/farmer-john:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: ASPNETCORE_URLS
+              value: "http://+:80"
+            - name: ConnectionStrings__DefaultConnection
+              value: "server=some-mysql;port=3306;user=root;password=mysqldatabase123;database=OJ"
+            - name: TonyApiUrl
+              value: "http://tony-service" # change if you have Tony service
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 30
+
+---
+# Farmer-John Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: farmer-john
+  namespace: online-judge
+spec:
+  selector:
+    app: farmer-john
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+---
+# Farmer-John API Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: farmer-john-api
+  namespace: online-judge
+spec:
+  selector:
+    app: farmer-john
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
+---

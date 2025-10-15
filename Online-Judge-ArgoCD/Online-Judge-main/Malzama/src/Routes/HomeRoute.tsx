@@ -1,0 +1,17 @@
+import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { User } from "../Context/UserContext";
+import Cookies from "universal-cookie";
+
+export default function ProtectedRoute() {
+  const cookie = new Cookies();
+  const token = cookie.get("Bearer");
+  const user = useContext(User);
+  const location = useLocation();
+  return !token ? (
+    <Outlet />  
+  ) : (
+    <Navigate state={{ from: location }} replace to="/" />
+  );
+}
+
