@@ -1,6 +1,7 @@
 # Bash Database Management System (DBMS)
 
 **A complete Database Management System implemented in Bash scripting language, featuring a user-friendly terminal interface with dynamic layout adaptation**
+
 ![alt text]({6E5F8980-277B-4F21-9C02-1C99539E303F}.png)
 ---
 
